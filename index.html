@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff0f5">
+    <title>Uma pergunta especial 💗</title>
+    <link rel="shortcut icon" href="https://static.vecteezy.com/ti/vetor-gratis/p1/2565764-dating-app-love-chat-vector-icon-logo-vetor.jpg" type="image/x-icon">
+</head>
+<body>
+    <style>
+        
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffe4ef, #f7d9ff, #fff0f5);
+    color: #713653;
+    overflow-x: hidden;
+}
+
+.card {
+    width: min(100%, 460px);
+    padding: 32px 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+    box-shadow: 0 18px 60px rgba(151, 66, 111, 0.16);
+    animation: appear 0.8s ease both;
+}
+
+.heart {
+    font-size: 58px;
+    animation: heartbeat 1.4s infinite;
+}
+
+h1 {
+    margin: 12px 0;
+    color: #d63384;
+    font-size: clamp(26px, 6vw, 36px);
+}
+
+.message {
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.photo {
+    display: block;
+    width: 100%;
+    height: 700px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    margin: 22px auto;
+    border-radius: 18px;
+    background: #ffe4ef;
+}
+
+.question {
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    min-height: 58px;
+    margin-top: 24px;
+}
+
+button {
+    min-width: 115px;
+    min-height: 48px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#yesButton {
+    color: white;
+    background: #e83e8c;
+    box-shadow: 0 6px 16px #e83e8c44;
+}
+
+#yesButton:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+#noButton {
+    color: #a13b70;
+    background: #ffe0ed;
+}
+
+.footer {
+    margin: 26px 0 0;
+    font-size: 13px;
+    color: #b77a99;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 24px 16px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    button {
+        min-width: 105px;
+        padding: 12px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+    </style>
+    <main class="card">
+        <div class="heart">💗</div>
+
+        <h1>Aceita namorar comigo?</h1>
+
+        <p class="message">
+            Você é uma pessoa muito especial para mim.
+            Que tal começarmos uma história juntos? ✨
+        </p>
+
+        <img
+            class="photo"
+            src="https://i.pinimg.com/236x/d1/51/be/d151be8bb1a9b2ce65bd0a839a1f7647.jpg?nii=t"
+            alt="Uma lembrança especial"
+        >
+
+        <p class="question">E então, qual é a sua resposta? 🥹</p>
+
+        <div class="buttons">
+            <button id="yesButton">Sim! 💖</button>
+            <button id="noButton">Não 🙈</button>
+        </div>
+
+        <p class="footer">Feito com carinho ❤️</p>
+    </main>
+
+    <script>
+        
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+
+let noMoves = 0;
+
+yesButton.addEventListener("click", () => {
+    const youtubeUrl =
+        "https://youtu.be/NwFVSclD_uc?si=C5TB4w9J3-Pyrhj-";
+
+    window.open(youtubeUrl, "_blank", "noopener,noreferrer");
+
+    document.querySelector("h1").textContent = "Que momento especial! 💖";
+    document.querySelector(".message").textContent =
+        "Obrigado por compartilhar esse momento comigo! ❤️";
+    document.querySelector(".question").textContent =
+        "Que essa história seja construída com carinho e respeito. ✨";
+});
+
+function moveNoButton() {
+    // Depois de algumas fugidas, o botão para de se mover.
+    // A pessoa continua podendo escolher a resposta.
+    if (noMoves >= 5) {
+        noButton.textContent = "Pode clicar 🙈";
+        return;
+    }
+
+    const rect = noButton.getBoundingClientRect();
+
+    const maxX = Math.max(0, window.innerWidth - rect.width - 16);
+    const maxY = Math.max(0, window.innerHeight - rect.height - 16);
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noButton.style.position = "fixed";
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+    noButton.style.zIndex = "1000";
+
+    noMoves++;
+}
+
+noButton.addEventListener("pointerenter", moveNoButton);
+
+noButton.addEventListener("click", () => {
+    if (noMoves >= 5) {
+        document.querySelector(".question").textContent =
+            "Tudo bem! Obrigado por responder com sinceridade. 💗";
+        noButton.style.position = "static";
+        noButton.style.left = "";
+        noButton.style.top = "";
+    } else {
+        moveNoButton();
+    }
+});
+
+// No celular, o primeiro toque também pode movimentar o botão.
+noButton.addEventListener("touchstart", (event) => {
+    if (noMoves < 5) {
+        event.preventDefault();
+        moveNoButton();
+    }
+}, { passive: false });
+
+    </script>
+</body>
+</html>
